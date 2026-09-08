@@ -2,7 +2,7 @@
 
 Your grind. Their filings. A quiet sidebar pairs a loot drop with a sourced US campaign finance receipt.
 
-The original black and red protest-poster player card leads with contributions from other political committees. It uses a photocopy texture, hard type, a monogram, party, state, chamber, and compact finance stats. Red amounts indicate a positive amount, green indicates zero in that category, and gray indicates unavailable data. These colors are not integrity ratings. No band logos, EA or FIFA artwork, or copyrighted reference images are used.
+The original black and red protest-poster player card shows one amount: contributions from other political committees. It uses a photocopy texture, hard type, a monogram, party, state, and chamber. Red amounts indicate a positive amount, green indicates zero in that category, and gray indicates unavailable data. These colors are not integrity ratings. Reporting dates remain visible. Open **What this means** for the exact amount, definitions, snapshot date, and session loot. No band logos, EA or FIFA artwork, or copyrighted reference images are used.
 
 By **shin86dev**. Version 0.1.0. Local review build. Not submitted to the Plugin Hub.
 

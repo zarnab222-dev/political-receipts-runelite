@@ -11,9 +11,9 @@ final class PlayerCard extends JComponent {
     private final FinanceFact fact;
     PlayerCard(FinanceFact fact) {
         this.fact = fact;
-        setPreferredSize(new Dimension(197, 332));
-        setMinimumSize(new Dimension(197, 332));
-        setMaximumSize(new Dimension(197, 332));
+        setPreferredSize(new Dimension(197, 280));
+        setMinimumSize(new Dimension(197, 280));
+        setMaximumSize(new Dimension(197, 280));
         setAlignmentX(Component.LEFT_ALIGNMENT);
         setToolTipText("Contributions from other political committees: " + (fact.committees == null ? "unavailable" : NumberFormat.getCurrencyInstance(Locale.US).format(fact.committees)));
     }
@@ -27,8 +27,8 @@ final class PlayerCard extends JComponent {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         Path2D shield = new Path2D.Double();
-        shield.moveTo(3, 7); shield.lineTo(192, 2); shield.lineTo(193, 321);
-        for (int x = 183; x > 3; x -= 12) { shield.lineTo(x, x % 5 == 0 ? 326 : 320); }
+        shield.moveTo(3, 7); shield.lineTo(192, 2); shield.lineTo(193, 269);
+        for (int x = 183; x > 3; x -= 12) { shield.lineTo(x, x % 5 == 0 ? 274 : 268); }
         shield.lineTo(3, 7); shield.closePath();
         g.setColor(new Color(22, 22, 22));
         g.fill(shield); g.setColor(new Color(226, 222, 211)); g.setStroke(new BasicStroke(2)); g.draw(shield);
@@ -44,16 +44,13 @@ final class PlayerCard extends JComponent {
         centered(g, names[0].substring(0, 1) + names[names.length - 1].substring(0, 1), 88, 38, new Color(19, 19, 19));
         g.rotate(0.055, 98, 77);
         centered(g, fact.name.toUpperCase(Locale.US), 128, fact.name.length() > 20 ? 12 : 16, ink);
-        centered(g, fact.party.toUpperCase(Locale.US) + " / " + fact.state, 145, 9, ink);
-        centered(g, fact.chamber.toUpperCase(Locale.US), 160, 9, ink);
+        centered(g, fact.party.toUpperCase(Locale.US) + " / " + fact.state, 145, 11, ink);
+        centered(g, fact.chamber.toUpperCase(Locale.US), 160, 10, ink);
         g.setColor(new Color(225,220,210)); g.fillRect(15, 172, 167, 2);
         Color amountColor = fact.committees == null ? new Color(160,160,160) : fact.committees == 0 ? new Color(119,215,141) : new Color(255,76,83);
         centered(g, fact.committees == null ? "UNKNOWN" : money(fact.committees), 210, fact.committees == null ? 24 : 34, amountColor);
-        centered(g, "OTHER POLITICAL COMMITTEES", 228, 9, ink);
-        centered(g, "REPORTED CONTRIBUTIONS / USD", 243, 8, ink);
-        g.setColor(new Color(225,220,210)); g.fillRect(15, 254, 167, 2);
-        centered(g, money(fact.receipts) + " TOTAL    " + money(fact.individual) + " INDIV.", 277, 10, ink);
-        centered(g, "CAMPAIGN RECEIPTS / FEC", 292, 8, ink);
+        centered(g, "Contributions from", 231, 12, ink);
+        centered(g, "other political committees", 247, 11, ink);
         g.dispose();
     }
     private void centered(Graphics2D g, String text, int y, int size, Color color) {
