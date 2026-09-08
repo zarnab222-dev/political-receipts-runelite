@@ -1,7 +1,6 @@
 package dev.shin86.receipts;
 
 import java.awt.*;
-import java.awt.geom.Path2D;
 import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JComponent;
@@ -26,28 +25,18 @@ final class PlayerCard extends JComponent {
         Graphics2D g = (Graphics2D) original.create();
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        Path2D shield = new Path2D.Double();
-        shield.moveTo(3, 7); shield.lineTo(192, 2); shield.lineTo(193, 269);
-        for (int x = 183; x > 3; x -= 12) { shield.lineTo(x, x % 5 == 0 ? 274 : 268); }
-        shield.lineTo(3, 7); shield.closePath();
-        g.setColor(new Color(22, 22, 22));
-        g.fill(shield); g.setColor(new Color(226, 222, 211)); g.setStroke(new BasicStroke(2)); g.draw(shield);
-        g.setClip(shield);
-        g.setColor(new Color(255,255,255,23));
-        for (int y = 12; y < 320; y += 6) { g.fillRect(7 + y % 9, y, 3 + y % 7, 1); g.fillRect(181 - y % 7, y, 5, 1); }
-        Color ink = new Color(242, 237, 224);
-        g.setColor(new Color(167, 18, 29)); g.fillRect(3, 14, 190, 24);
-        centered(g, "PUBLIC RECORD / 2026", 30, 10, ink);
-        g.rotate(-0.055, 98, 77);
-        g.setColor(ink); g.fillRect(64, 46, 68, 59);
+        g.setColor(new Color(239, 238, 232)); g.fillRoundRect(2, 2, 193, 274, 18, 18);
+        g.setColor(new Color(199, 200, 194)); g.drawRoundRect(2, 2, 193, 274, 18, 18);
+        Color ink = new Color(35, 39, 42);
+        centered(g, "Public record · 2026", 28, 10, new Color(99, 103, 106));
+        g.setColor(new Color(216, 217, 214)); g.fillOval(67, 44, 64, 64);
         String[] names = fact.name.split(" ");
-        centered(g, names[0].substring(0, 1) + names[names.length - 1].substring(0, 1), 88, 38, new Color(19, 19, 19));
-        g.rotate(0.055, 98, 77);
-        centered(g, fact.name.toUpperCase(Locale.US), 128, fact.name.length() > 20 ? 12 : 16, ink);
-        centered(g, fact.party.toUpperCase(Locale.US) + " / " + fact.state, 145, 11, ink);
-        centered(g, fact.chamber.toUpperCase(Locale.US), 160, 10, ink);
-        g.setColor(new Color(225,220,210)); g.fillRect(15, 172, 167, 2);
-        Color amountColor = fact.committees == null ? new Color(160,160,160) : fact.committees == 0 ? new Color(119,215,141) : new Color(255,76,83);
+        centered(g, names[0].substring(0, 1) + names[names.length - 1].substring(0, 1), 88, 28, ink);
+        centered(g, fact.name, 128, fact.name.length() > 20 ? 12 : 18, ink);
+        centered(g, fact.party + " · " + fact.state, 146, 11, new Color(90, 94, 97));
+        centered(g, fact.chamber, 161, 11, new Color(90, 94, 97));
+        g.setColor(new Color(210,211,205)); g.drawLine(18, 174, 179, 174);
+        Color amountColor = fact.committees == null ? new Color(100,104,108) : fact.committees == 0 ? new Color(44,108,71) : new Color(160,69,72);
         centered(g, fact.committees == null ? "UNKNOWN" : money(fact.committees), 210, fact.committees == null ? 24 : 34, amountColor);
         centered(g, "Contributions from", 231, 12, ink);
         centered(g, "other political committees", 247, 11, ink);

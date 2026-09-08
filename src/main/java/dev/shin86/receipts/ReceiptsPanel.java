@@ -9,14 +9,14 @@ import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.util.LinkBrowser;
 
 final class ReceiptsPanel extends PluginPanel {
-    private static final Color INK = new Color(12, 12, 12), PAPER = new Color(239, 237, 221), ACCENT = new Color(255, 76, 83);
+    private static final Color INK = new Color(28, 31, 34), PAPER = new Color(239, 238, 232), ACCENT = new Color(180, 184, 185);
     private static final NumberFormat NUMBER = NumberFormat.getIntegerInstance(Locale.US);
     ReceiptsPanel(int minimumLoot) { waiting(minimumLoot); }
     private void begin() {
         removeAll(); setBackground(INK); setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(new EmptyBorder(20, 14, 20, 14));
-        text("RECEIPTS", 30, PAPER, true);
-        text("FOLLOW THE MONEY.", 11, ACCENT, true);
+        text("Receipts", 26, PAPER, true);
+        text("Follow the money.", 12, ACCENT, false);
         add(Box.createVerticalStrut(22));
     }
     void waiting(int minimumLoot) {
@@ -28,7 +28,7 @@ final class ReceiptsPanel extends PluginPanel {
     void unavailable() { begin(); text("No verified finance data available.", 14, PAPER, true); finish(); }
     void showReceipt(String encounter, long gp, long total, FinanceFact fact) {
         begin();
-        text("01 / YOUR LOOT", 10, PAPER, true);
+        text("Your loot", 12, ACCENT, false);
         text(NUMBER.format(gp) + " GP", 27, PAPER, true);
         text(encounter + " · GE estimate", 12, PAPER, false);
         add(Box.createVerticalStrut(14));
