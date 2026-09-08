@@ -33,7 +33,7 @@ public class ReceiptsPlugin extends Plugin {
     @Override protected void startUp() throws Exception {
         facts = FinanceFact.load();
         session.reset(); nextFact = 0;
-        SwingUtilities.invokeAndWait(() -> {
+        // RuneLite calls plugin lifecycle methods on the Swing event thread.
             panel = new ReceiptsPanel(config.minimumLoot());
             if (facts.isEmpty()) { panel.unavailable(); }
             BufferedImage icon = new BufferedImage(24, 24, BufferedImage.TYPE_INT_ARGB);
@@ -43,7 +43,6 @@ public class ReceiptsPlugin extends Plugin {
             graphics.dispose();
             navigation = NavigationButton.builder().tooltip("Receipts").icon(icon).priority(8).panel(panel).build();
             toolbar.addNavigation(navigation);
-        });
     }
 
     @Override protected void shutDown() {
