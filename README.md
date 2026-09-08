@@ -4,7 +4,9 @@ Your grind. Their filings. A quiet sidebar pairs a loot drop with a sourced US c
 
 The clean player card shows one amount: contributions from other political committees. It uses a neutral background, readable type, a monogram, party, state, and chamber. Muted red amounts indicate a positive amount, green indicates zero in that category, and gray indicates unavailable data. These colors are not integrity ratings. Reporting dates remain visible. Open **What this means** for the exact amount, definitions, snapshot date, and session loot. All card artwork is original.
 
-By **shin86dev**. Version 0.1.0. Local review build. Not submitted to the Plugin Hub.
+By **shin86dev**. Version 0.1.0. Public source preview. Not submitted to the Plugin Hub. Launch is deferred until the maintainer completes live game testing and chooses to submit it.
+
+This repository contains the RuneLite companion to [Receipts for Chrome](https://github.com/zarnab222-dev/political-receipts). Publishing the source does not install or launch either product.
 
 ## Behavior
 
@@ -41,7 +43,7 @@ The source is the official [FEC all-candidates bulk data](https://www.fec.gov/ca
 ## Publishing after review
 
 1. Vet the behavior, wording, visual design, and live game results.
-2. Create a public source repository under the confirmed publishing account. `author=shin86dev` is display metadata; it does not establish account ownership.
+2. Use the public source repository `zarnab222-dev/political-receipts-runelite`. `author=shin86dev` is display metadata; the GitHub owner is `zarnab222-dev`.
 3. Push the exact reviewed commit. Keep the BSD 2-Clause license.
 4. Fork `runelite/plugin-hub`. Add `plugins/political-receipts` with `repository=<public clone URL>` and `commit=<full reviewed SHA>`.
 5. Submit one Plugin Hub pull request. Wait for CI and maintainer review. A local build is not approval or publication.
