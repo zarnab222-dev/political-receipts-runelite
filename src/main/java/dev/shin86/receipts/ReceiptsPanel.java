@@ -16,7 +16,7 @@ final class ReceiptsPanel extends PluginPanel {
         removeAll(); setBackground(INK); setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(new EmptyBorder(20, 14, 20, 14));
         text("R E C E I P T S", 20, MINT, true);
-        text("YOUR GRIND. THEIR FILINGS.", 10, PAPER, false);
+        text("YOUR GRIND. THEIR TRANSFER WINDOW.", 9, PAPER, false);
         add(Box.createVerticalStrut(22));
     }
     void waiting(int minimumLoot) {
@@ -32,15 +32,15 @@ final class ReceiptsPanel extends PluginPanel {
         text(NUMBER.format(gp) + " GP", 27, PAPER, true);
         text(encounter + " · GE estimate", 12, PAPER, false);
         text("Session loot: " + NUMBER.format(total) + " GP", 11, Color.LIGHT_GRAY, false);
-        add(Box.createVerticalStrut(22));
-        text("02 / THE PUBLIC RECORD", 10, MINT, true);
-        text(fact.name, 20, PAPER, true);
-        text(NumberFormat.getCurrencyInstance(Locale.US).format(fact.receipts), 23, PAPER, true);
-        text("Reported campaign receipts · USD", 12, PAPER, true);
+        add(Box.createVerticalStrut(14));
+        add(new PlayerCard(fact));
+        add(Box.createVerticalStrut(10));
+        text(fact.committees == null ? "Committee contributions: unavailable" : NumberFormat.getCurrencyInstance(Locale.US).format(fact.committees) + " from other political committees", 11, PAPER, true);
         text(fact.period, 11, Color.LIGHT_GRAY, false);
         add(Box.createVerticalStrut(18));
-        text("WHAT DOES THAT NUMBER MEAN?", 10, MINT, true);
-        text("Receipts include more than donations and can double-count transfers between authorized committees. This total does not identify corporate funding or prove influence.", 12, PAPER, false);
+        text("CHECK THE STAT, THEN THE RECORD.", 10, MINT, true);
+        text("Other political committees is an FEC category, not a corporate-only total. Zero means zero in this category, not clean hands. Color shows the amount category, not an integrity rating.", 11, PAPER, false);
+        text("TOTAL = campaign receipts. INDIV. = individual contributions. Receipts can double-count authorized committee transfers.", 10, Color.LIGHT_GRAY, false);
         text("Different currencies. Different periods. No exchange rate or same-time claim.", 11, Color.LIGHT_GRAY, false);
         JButton source = new JButton("Read the FEC filing ↗");
         source.setAlignmentX(Component.LEFT_ALIGNMENT); source.setBackground(MINT); source.setForeground(INK);

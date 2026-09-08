@@ -12,8 +12,8 @@ public class ReceiptsPreview {
         SwingUtilities.invokeAndWait(() -> {
             ReceiptsPanel panel = new ReceiptsPanel(50000);
             panel.showReceipt("Tombs of Amascut (sample)", 78000, 78000, fact);
-            panel.setSize(225, 900); layout(panel);
-            BufferedImage image = new BufferedImage(225, 900, BufferedImage.TYPE_INT_RGB);
+            panel.setSize(225, 1120); layout(panel);
+            BufferedImage image = new BufferedImage(225, 1120, BufferedImage.TYPE_INT_RGB);
             Graphics2D graphics = image.createGraphics();
             graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
             panel.printAll(graphics); graphics.dispose();

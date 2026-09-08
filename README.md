@@ -2,6 +2,8 @@
 
 Your grind. Their filings. A quiet sidebar pairs a loot drop with a sourced US campaign finance receipt.
 
+The original gold player card leads with contributions from other political committees. It shows a monogram, party, state, chamber, and compact finance stats. Red indicates a positive amount, green indicates zero in that category, and gray indicates unavailable data. These colors are not integrity ratings. No EA or FIFA artwork or marks are used.
+
 By **shin86dev**. Version 0.1.0. Local review build. Not submitted to the Plugin Hub.
 
 ## Behavior
