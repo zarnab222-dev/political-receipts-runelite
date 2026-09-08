@@ -9,14 +9,14 @@ import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.util.LinkBrowser;
 
 final class ReceiptsPanel extends PluginPanel {
-    private static final Color INK = new Color(21, 29, 28), PAPER = new Color(239, 237, 221), MINT = new Color(186, 226, 121);
+    private static final Color INK = new Color(12, 12, 12), PAPER = new Color(239, 237, 221), ACCENT = new Color(255, 76, 83);
     private static final NumberFormat NUMBER = NumberFormat.getIntegerInstance(Locale.US);
     ReceiptsPanel(int minimumLoot) { waiting(minimumLoot); }
     private void begin() {
         removeAll(); setBackground(INK); setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(new EmptyBorder(20, 14, 20, 14));
-        text("R E C E I P T S", 20, MINT, true);
-        text("YOUR GRIND. THEIR TRANSFER WINDOW.", 9, PAPER, false);
+        text("RECEIPTS", 30, PAPER, true);
+        text("FOLLOW THE MONEY.", 11, ACCENT, true);
         add(Box.createVerticalStrut(22));
     }
     void waiting(int minimumLoot) {
@@ -28,7 +28,7 @@ final class ReceiptsPanel extends PluginPanel {
     void unavailable() { begin(); text("No verified finance data available.", 14, PAPER, true); finish(); }
     void showReceipt(String encounter, long gp, long total, FinanceFact fact) {
         begin();
-        text("01 / YOUR LOOT", 10, MINT, true);
+        text("01 / YOUR LOOT", 10, PAPER, true);
         text(NUMBER.format(gp) + " GP", 27, PAPER, true);
         text(encounter + " · GE estimate", 12, PAPER, false);
         text("Session loot: " + NUMBER.format(total) + " GP", 11, Color.LIGHT_GRAY, false);
@@ -38,15 +38,15 @@ final class ReceiptsPanel extends PluginPanel {
         text(fact.committees == null ? "Committee contributions: unavailable" : NumberFormat.getCurrencyInstance(Locale.US).format(fact.committees) + " from other political committees", 11, PAPER, true);
         text(fact.period, 11, Color.LIGHT_GRAY, false);
         add(Box.createVerticalStrut(18));
-        text("CHECK THE STAT, THEN THE RECORD.", 10, MINT, true);
+        text("CHECK THE STAT. READ THE RECORD.", 10, ACCENT, true);
         text("Other political committees is an FEC category, not a corporate-only total. Zero means zero in this category, not clean hands. Color shows the amount category, not an integrity rating.", 11, PAPER, false);
         text("TOTAL = campaign receipts. INDIV. = individual contributions. Receipts can double-count authorized committee transfers.", 10, Color.LIGHT_GRAY, false);
         text("Different currencies. Different periods. No exchange rate or same-time claim.", 11, Color.LIGHT_GRAY, false);
         JButton source = new JButton("Read the FEC filing ↗");
-        source.setAlignmentX(Component.LEFT_ALIGNMENT); source.setBackground(MINT); source.setForeground(INK);
+        source.setAlignmentX(Component.LEFT_ALIGNMENT); source.setBackground(PAPER); source.setForeground(INK);
         source.addActionListener(event -> LinkBrowser.browse(fact.source)); add(source);
         text("Snapshot: " + fact.retrievedAt.substring(0, 10) + " · FEC", 10, Color.LIGHT_GRAY, false);
-        text("|||| ||| | |||| || | ||| ||||", 21, MINT, true);
+        text("|||| ||| | |||| || | ||| ||||", 21, PAPER, true);
         text("shin86dev / public facts, private play", 10, Color.LIGHT_GRAY, false);
         finish();
     }

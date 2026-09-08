@@ -38,7 +38,7 @@ public class ReceiptsPlugin extends Plugin {
             if (facts.isEmpty()) { panel.unavailable(); }
             BufferedImage icon = new BufferedImage(24, 24, BufferedImage.TYPE_INT_ARGB);
             Graphics2D graphics = icon.createGraphics();
-            graphics.setColor(new Color(186, 226, 121));
+            graphics.setColor(new Color(239, 237, 221));
             for (int x = 3; x < 22; x += 3) { graphics.fillRect(x, 4, x % 2 + 1, 16); }
             graphics.dispose();
             navigation = NavigationButton.builder().tooltip("Receipts").icon(icon).priority(8).panel(panel).build();
